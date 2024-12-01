@@ -34,14 +34,37 @@ int printnum(int num,const int base,const int upper)
     	return (-1);
 	return (c + cr);
 }
+int	printstr(const char *str)
+{
+	int	c;
+	int res;
+
+	c = 0;
+	res = 0;
+	if (str == NULL)
+		return (printstr("(null)"));
+	while (*str)
+	{
+		res = printchar(*str);
+		if (res == -1)
+    		return (-1);
+		c += res;
+		str++;
+	}
+	return (c);
+
+}
 
 int main()
 {
 
     int res;
+	char	*strg;
 
-	res = printnum(255,16,1);
-	dprintf(2,"\n",1);
+	strg = NULL;
+	//res = printnum(255,16,1);
+	res = printstr(strg);
+	dprintf(2,"\n");
 	dprintf(2,"Printed %d\n",res);
-	return 0;
+	return (0);
 }

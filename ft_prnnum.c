@@ -61,9 +61,10 @@ int main()
     int res;
 	char	*strg;
 
-	strg = NULL;
+	strg = "NewString";
 	//res = printnum(255,16,1);
-	res = printstr(strg);
+	res = printf("%p\n",strg);
+	res = printnum(strg,16,0);
 	dprintf(2,"\n");
 	dprintf(2,"Printed %d\n",res);
 	return (0);

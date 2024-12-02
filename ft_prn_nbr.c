@@ -1,22 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_prn_nbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 17:34:43 by omatyko           #+#    #+#             */
-/*   Updated: 2024/12/02 18:17:24 by omatyko          ###   ########.fr       */
+/*   Created: 2024/12/02 18:13:12 by omatyko           #+#    #+#             */
+/*   Updated: 2024/12/02 18:16:25 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-int	prn_char(char c);
-int	prn_str(const char *str);
-int	prn_u_hex(unsigned int num, const int base, const int upper);
-int     prn_nbr(int num, const int base);
+int	prn_nbr(int num, const int base)
+{
+	char	*numbers;
+	int		c;
+	int		cr;
 
-#endif
+	c = 0;
+	cr = 0;
+	if (num < 0)
+	{
+		c = printchar('-');
+		if (c == -1)
+			return (-1);
+		num = -num;
+	}
+	numbers = "0123456789";
+	if (num > base)
+		cr = printnum(num / base, base);
+	if (cr == -1)
+		return (-1);
+	c = printchar(numbers[num % base]);
+	if (c == -1)
+		return (-1);
+	return (c + cr);
+}

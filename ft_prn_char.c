@@ -12,8 +12,7 @@
 
 #include "ft_printf.h"
 
-int prn_char(char c)
+int	prn_char(char c)
 {
-        return write(1,&c,1);
+	return (write(1, &c, 1));
 }
-

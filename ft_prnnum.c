@@ -6,7 +6,7 @@ int printchar(char c)
 	return write(1,&c,1);
 }
 
-int printnum(int num,const int base,const int upper)
+int printnum(unsigned int num,const int base,const int upper)
 {
 	char    *numbers;
 	int	c;
@@ -58,14 +58,20 @@ int	printstr(const char *str)
 int main()
 {
 
-    int res;
+/*    int res;
 	char	*strg;
 
 	strg = "NewString";
 	//res = printnum(255,16,1);
-	res = printf("%p\n",strg);
-	res = printnum(strg,16,0);
+	res = printf("%p\n",(void *)strg);
+	res = printstr("0x") + printnum((void *)strg,16,0);
+		
 	dprintf(2,"\n");
 	dprintf(2,"Printed %d\n",res);
+*/
+	char *str;
+
+printf("Test hex %p/n", str);
+printnum((unsigned int)str,16,0);
 	return (0);
 }

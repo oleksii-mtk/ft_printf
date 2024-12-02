@@ -14,20 +14,20 @@
 
 int	prn_str(const char *str)
 {
-	int     c;
-        int res;
+	int	c;
+	int	res;
 
-        c = 0;
-        res = 0;
-        if (str == NULL)
-                return (printstr("(null)"));
-        while (*str)
-        {
-                res = printchar(*str);
-                if (res == -1)
-                return (-1);
-                c += res;
-                str++;
-        }
-        return (c);
+	c = 0;
+	res = 0;
+	if (str == NULL)
+		return (printstr("(null)"));
+	while (*str)
+	{
+		res = printchar(*str);
+		if (res == -1)
+			return (-1);
+		c += res;
+		str++;
+	}
+	return (c);
 }

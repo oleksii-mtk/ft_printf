@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 17:41:07 by omatyko           #+#    #+#             */
-/*   Updated: 2024/12/02 17:42:41 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/12/03 15:04:42 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int	prn_str(const char *str)
 	c = 0;
 	res = 0;
 	if (str == NULL)
-		return (printstr("(null)"));
+		return (prn_str("(null)"));
 	while (*str)
 	{
-		res = printchar(*str);
+		res = prn_char(*str);
 		if (res == -1)
 			return (-1);
 		c += res;

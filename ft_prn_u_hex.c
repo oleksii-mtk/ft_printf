@@ -6,13 +6,13 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 17:56:49 by omatyko           #+#    #+#             */
-/*   Updated: 2024/12/02 18:05:00 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/12/03 15:06:23 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_print.h"
+#include "ft_printf.h"
 
-int	prn_u_hex(unsigned int num, const int base, const int upper)
+int	prn_u_hex(unsigned int num, unsigned int base, const int upper)
 {
 	char	*nmb;
 	int		c;
@@ -22,7 +22,7 @@ int	prn_u_hex(unsigned int num, const int base, const int upper)
 	cr = 0;
 	nmb = "0123456789abcdef";
 	if (num > base)
-		cr = prn_hex(num / base, base, upper);
+		cr = prn_u_hex(num / base, base, upper);
 	if (cr == -1)
 		return (-1);
 	if ((nmb[num % base]) >= 'a' && (nmb[num % base]) <= 'f' && upper)

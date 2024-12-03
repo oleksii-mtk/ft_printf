@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 17:34:43 by omatyko           #+#    #+#             */
-/*   Updated: 2024/12/02 18:17:24 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/12/03 17:41:27 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 int	prn_char(char c);
 int	prn_str(const char *str);
-int	prn_u_hex(unsigned int num, const int base, const int upper);
-int     prn_nbr(int num, const int base);
+int	prn_u_hex(unsigned int num, unsigned int base, const int upper);
+int     prn_nbr(int num);
 
 #endif

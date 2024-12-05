@@ -13,9 +13,11 @@ int	main()
 	int	c_my;
 	int	c_orig;
 
-	int x;
+	int y = 0;
+	int *x = &y;
 
-	x = 45;
+	*x = 45;
+	close(1);
 	c_orig = printf("This is test string %d\n", 12);
 	c_my = ft_printf("This is test string %d\n", 12);
 	printf("\n");
@@ -27,8 +29,15 @@ int	main()
 	printf("\n");
 	symb_print(c_orig, c_my);
 
-	c_orig = printf("This is test pointer %p\n", &x);
-	c_my = ft_printf("This is test pointer %p\n", &x);
+	c_orig = printf("This is test pointer %p\n", x);
+	c_my = ft_printf("This is test pointer %p\n", x);
+
+	printf("\n");
+	symb_print(c_orig, c_my);
+
+	x = NULL;
+	c_orig = printf("This is NULL pointer %p\n", x);
+	c_my = ft_printf("This is NULL pointer %p\n", x);
 
 	printf("\n");
 	symb_print(c_orig, c_my);

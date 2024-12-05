@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 22:19:35 by omatyko           #+#    #+#             */
-/*   Updated: 2024/12/05 23:18:57 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/12/06 00:39:39 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int case_next_symbol(va_list args, const char *str, int *count)
     else if (*str == 's')
         res = prn_str(va_arg(args, char *));
 	else if (*str == 'p')
-		res = prn_ptr(va_arg(args, unsigned int));
+		res = prn_ptr(va_arg(args, uintptr_t), "0x");
     else if (*str == 'd' || *str == 'i')
         res = prn_nbr(va_arg(args, int));
     else if (*str == 'x' || *str == 'X')

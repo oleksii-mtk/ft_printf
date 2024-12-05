@@ -18,5 +18,10 @@ int	main()
 	c_my = ft_printf("This is test string %d\n", 12);
 	printf("\n");
 	symb_print(c_orig, c_my);
+
+	c_orig = printf("This is test string %x\n", 255);
+	c_my = ft_printf("This is test string %x\n", 255);
+	printf("\n");
+	symb_print(c_orig, c_my);
 	return (0);
 }

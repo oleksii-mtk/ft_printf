@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 22:19:35 by omatyko           #+#    #+#             */
-/*   Updated: 2024/12/05 13:36:54 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/12/05 23:18:57 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include "ft_printf.h"
 
-static int case_next_symbol(va_list args, const char *str, int *count) 
+static int case_next_symbol(va_list args, const char *str, int *count)
 {
     int res;
 
@@ -23,7 +23,9 @@ static int case_next_symbol(va_list args, const char *str, int *count)
         res = prn_char(va_arg(args, int));
     else if (*str == 's')
         res = prn_str(va_arg(args, char *));
-    else if (*str == 'd')
+	else if (*str == 'p')
+		res = prn_ptr(va_arg(args, unsigned int));
+    else if (*str == 'd' || *str == 'i')
         res = prn_nbr(va_arg(args, int));
     else if (*str == 'x' || *str == 'X')
         res = prn_u_hex(va_arg(args, unsigned int), 16, *str);

@@ -9,11 +9,13 @@ void symb_print(int orig, int my)
 }
 
 int	main()
-{	
+{
 	int	c_my;
 	int	c_orig;
 
-	
+	int x;
+
+	x = 45;
 	c_orig = printf("This is test string %d\n", 12);
 	c_my = ft_printf("This is test string %d\n", 12);
 	printf("\n");
@@ -24,5 +26,12 @@ int	main()
 
 	printf("\n");
 	symb_print(c_orig, c_my);
+
+	c_orig = printf("This is test pointer %p\n", &x);
+	c_my = ft_printf("This is test pointer %p\n", &x);
+
+	printf("\n");
+	symb_print(c_orig, c_my);
+
 	return (0);
 }

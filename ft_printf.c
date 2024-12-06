@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 22:19:35 by omatyko           #+#    #+#             */
-/*   Updated: 2024/12/06 13:13:02 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/12/06 15:46:59 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	case_next_symbol(va_list args, const char *str, int *count)
 	if (res == -1)
 		return (-1);
 	*count += res;
-	return (0);
+	return (*count);
 }
 
 int	ft_printf(const char *str, ...)
@@ -49,12 +49,13 @@ int	ft_printf(const char *str, ...)
 
 	count = 0;
 	va_start(args, str);
-	while (*str)
+	if (*str == '%' && *(str + 1) == '\0')
+		count = -1;
+	while (*str && count != -1)
 	{
 		if (*str == '%')
 		{
-			str++;
-			if (*str && case_next_symbol(args, str, &count) == -1)
+			if (*(str + 1) && case_next_symbol(args, str + 1, &count) == -1)
 				return (-1);
 		}
 		else

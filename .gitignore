@@ -1,6 +1,7 @@
 *.env
 /build/
 /.vscode/
+/printfTester/
 LICINSE
 README.md
 *out

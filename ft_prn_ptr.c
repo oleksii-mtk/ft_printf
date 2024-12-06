@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 17:56:49 by omatyko           #+#    #+#             */
-/*   Updated: 2024/12/06 00:41:10 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/12/06 13:07:00 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	prn_ptr(uintptr_t num, char *prefix)
 	c = 0;
 	cr = 0;
 	if (!num)
-		return prn_str("(nil)");
+		return (prn_str("(nil)"));
 	if (*prefix)
 		c = prn_str(prefix);
 	if (c == -1)

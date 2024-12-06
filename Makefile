@@ -10,6 +10,8 @@ OBJS = $(SRCS:.c=.o)
 MAIN = main
 MAIN_OBJS = $(MAIN).o
 
+.SECONDARY : $(OBJS)
+
 all: $(NAME)
 
 $(NAME): $(OBJS)

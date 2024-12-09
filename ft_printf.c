@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 22:19:35 by omatyko           #+#    #+#             */
-/*   Updated: 2024/12/06 15:46:59 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/12/09 15:51:52 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,32 @@ static int	case_next_symbol(va_list args, const char *str, int *count)
 		res = prn_u_hex(va_arg(args, unsigned int), 10, '0');
 	else if (*str == '%')
 		res = prn_char('%');
+	else if (is_alpha(str) && !is_prefix(str))
+		res = print_non_def_prefix(str);		
 	else
 		res = -1;
 	if (res == -1)
-		return (-1);
+		return (res);
 	*count += res;
 	return (*count);
+}
+
+int check_wrong_prefix(const char *str)
+{
+	if (*str == '%' && *(str + 1) == '\0')
+		return (-1);
+	else
+		return (0);
+}
+void print_char_with_errcheck(const char *str, int *count)
+{
+	int	res;
+	
+	res = prn_char(*str);
+	if (res == -1)
+			*count = -1;
+	*count += res;
+	
 }
 
 int	ft_printf(const char *str, ...)
@@ -49,22 +69,17 @@ int	ft_printf(const char *str, ...)
 
 	count = 0;
 	va_start(args, str);
-	if (*str == '%' && *(str + 1) == '\0')
-		count = -1;
+	count = check_wrong_prefix(str);
 	while (*str && count != -1)
 	{
 		if (*str == '%')
 		{
 			if (*(str + 1) && case_next_symbol(args, str + 1, &count) == -1)
-				return (-1);
+				count = -1;
+			str++;
 		}
 		else
-		{
-			res = prn_char(*str);
-			if (res == -1)
-				return (-1);
-			count += res;
-		}
+			print_char_with_errcheck(str, &count);
 		str++;
 	}
 	va_end(args);

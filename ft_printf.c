@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omatyko <omatyko@student.42.fr>            +#+  +:+       +#+        */
+/*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 22:19:35 by omatyko           #+#    #+#             */
-/*   Updated: 2024/12/11 13:32:48 by omatyko          ###   ########.fr       */
+/*   Created: 2024/12/11 13:50:07 by omatyko           #+#    #+#             */
+/*   Updated: 2024/12/11 13:51:44 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	case_next_symbol(va_list args, const char *str, int *count)
 	else if (*str == '%')
 		res = prn_char('%');
 	else if (is_alpha(str) && !is_prefix(str))
-		res = print_non_def_prefix(str);		
+		res = print_non_def_prefix(str);
 	else
 		res = -1;
 	if (res == -1)
@@ -43,22 +43,22 @@ static int	case_next_symbol(va_list args, const char *str, int *count)
 	return (*count);
 }
 
-int check_wrong_prefix(const char *str)
+int	check_wrong_prefix(const char *str)
 {
 	if (*str == '%' && *(str + 1) == '\0')
 		return (-1);
 	else
 		return (0);
 }
-void print_char_with_errcheck(const char *str, int *count)
+
+void	print_char_with_errcheck(const char *str, int *count)
 {
 	int	res;
-	
+
 	res = prn_char(*str);
 	if (res == -1)
-			*count = -1;
+		*count = -1;
 	*count += res;
-	
 }
 
 int	ft_printf(const char *str, ...)
@@ -76,8 +76,8 @@ int	ft_printf(const char *str, ...)
 			if (case_next_symbol(args, str + 1, &count) == -1)
 			{
 				va_end(args);
-				return(-1);	
-			}				
+				return (-1);
+			}
 			str++;
 		}
 		else

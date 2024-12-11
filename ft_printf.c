@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 22:19:35 by omatyko           #+#    #+#             */
-/*   Updated: 2024/12/09 15:51:52 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/12/11 13:32:48 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	args;
 	int		count;
-	int		res;
 
 	count = 0;
 	va_start(args, str);
@@ -74,8 +73,11 @@ int	ft_printf(const char *str, ...)
 	{
 		if (*str == '%')
 		{
-			if (*(str + 1) && case_next_symbol(args, str + 1, &count) == -1)
-				count = -1;
+			if (case_next_symbol(args, str + 1, &count) == -1)
+			{
+				va_end(args);
+				return(-1);	
+			}				
 			str++;
 		}
 		else
